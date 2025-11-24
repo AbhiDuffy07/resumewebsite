@@ -1,8 +1,3 @@
-// ========================================
-// MULTI-THEME PORTFOLIO - SCRIPT.JS
-// Features: Theme Switching, Animations, Matrix Rain, Smooth Scroll
-// ========================================
-
 $(document).ready(function() {
     console.log('%c🚀 Portfolio Loaded Successfully!', 'color: #00ff41; font-size: 16px; font-weight: bold;');
     
@@ -25,7 +20,7 @@ $(document).ready(function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         
-        const letters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        const letters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const fontSize = 14;
         const columns = canvas.width / fontSize;
         const drops = [];
@@ -59,6 +54,19 @@ $(document).ready(function() {
         
         window.matrixInterval = setInterval(draw, 35);
     }
+    
+    // ===== HORIZONTAL CAROUSEL DUPLICATION - NEW =====
+    function initHorizontalCarousel() {
+        const carousel = $('#skillsCarousel');
+        if (carousel.length) {
+            // Duplicate content for seamless infinite scroll
+            const items = carousel.html();
+            carousel.html(carousel.html() + items); // Clone all items
+        }
+    }
+    
+    // Initialize carousel on load
+    initHorizontalCarousel();
     
     // ===== THEME-SPECIFIC ANIMATIONS =====
     
@@ -236,8 +244,6 @@ $(document).ready(function() {
         
         console.log('%c🎮 Gaming Theme Activated - Click coins & character!', 'color: #00d9ff; font-weight: bold;');
     }
-
-    
     
     // Matrix Theme - Enhanced effects
     function initMatrixTheme() {
